@@ -1,0 +1,91 @@
+body{
+ padding:0px;
+ margin: 0px;
+}
+/* Menu */
+nav {
+    background-color: #191919;
+}
+nav a {
+    color:#ccc;
+}
+nav a:hover {
+    color:#eee;
+    text-decoration:underline!important;
+}
+/* Parte do mes */
+#container-month {
+    margin:0px;
+    margin-top:20px;
+
+}
+.container-login {
+    float:right;
+    margin-right: 10px;
+    margin-left: 25px;
+
+}
+.container-login a {
+    list-style: none;
+
+}
+.month-container-row {
+
+}
+#container-month {
+    background-color:#d4d4d4;
+}
+.month-container-prev , .month-container-next {
+ 
+    margin-top: auto;
+    margin-bottom: auto;
+    height:45px;
+}
+.month-container-prev a, .month-container-next a{
+    padding:3px 6px 3px 6px;
+    width:33%;
+    height: 100%;
+}
+.month-container-next a {
+    float:right;
+}
+.month {
+    width:100%;
+    text-align:center;
+
+}
+#month-letter, #month-prev, #month-next {
+    font-size:40px;
+    font-family: sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+/* Calendario(Mostrando os Dias) */
+.calendar-col {
+    padding:0px 2px 0px 2px!important;
+    padding:0;
+    display:flex;
+    margin: auto;
+    background-color: #d4d4d4;
+}
+.calendar-container {
+
+}
+.calendar-container-day {
+    width:156px;
+    height:100px;
+    border: 1px solid #000;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    float:left;
+}
+.calendar-container-day ul {
+    padding:0px;
+    margin: 0px;
+}
+.calendar-container-day li {
+    list-style-type: none;
+    font-size: 25px;
+}
