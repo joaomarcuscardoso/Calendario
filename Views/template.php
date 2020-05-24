@@ -29,7 +29,7 @@
                         <a class="nav-link" href="<?php echo BASE_URL; ?>">home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo BASE_URL; ?>home/schedules">Agendamentos</a>
+                        <a class="nav-link" href="<?php echo BASE_URL; ?>schedules/">Agendamentos</a>
                     </li>
 
                 </ul>

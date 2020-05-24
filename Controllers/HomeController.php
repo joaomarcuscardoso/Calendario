@@ -13,7 +13,7 @@ class HomeController extends Controller {
     public function index() {
         $data = new Data();  
 
-        $this->array['data'] = $data->selectAll();
+        $this->array['data'] = $data->selectForId(1);
 
 
 
@@ -22,7 +22,9 @@ class HomeController extends Controller {
         $now = getdate(strtotime($months));
 
         $this->array["months"] = cal_days_in_month(CAL_GREGORIAN, $now['mon'], $now['year']);
-        
+
+
+
 
         $this->loadTemplate("home", $this->array);
     }

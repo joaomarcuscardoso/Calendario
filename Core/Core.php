@@ -28,14 +28,15 @@ class Core {
 			$currentAction = 'index';
 		}
 
-
-		if(!file_exists('controllers/'.$currentController.'.php')) {
+	
+		if(!file_exists('Controllers/'.$currentController.'.php')) {
 			
 			$currentController = 'notFoundController';
 			$currentAction = 'index';
 		}
 		$currentController = ucfirst($currentController);
-	
+
+
 		$c = new $currentController();
 
 		if(!method_exists($c, $currentAction)) {

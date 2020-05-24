@@ -7,7 +7,7 @@ global $db;
 $config = array();
 
 if(ENVIRONMENT == 'development') {
-	define("BASE_URL", "http://localhost/Calendar/");
+	define("BASE_URL", "http://localhost/Calendario/");
 	$config['dbname'] = 'calendario';
 	$config['host'] = 'localhost';
 	$config['dbuser'] = 'root';

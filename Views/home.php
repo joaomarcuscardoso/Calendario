@@ -20,7 +20,6 @@
     <div class="col-sm-12 calendar-col">
         <div class="calendar-container">
 
-
             
             <?php for($i = 0;$i <= $months;$i++): // 42 ?>
 
