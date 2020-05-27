@@ -26,7 +26,7 @@
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo BASE_URL; ?>">home</a>
+                        <a class="nav-link" href="<?php echo BASE_URL; ?>">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo BASE_URL; ?>schedules/">Agendamentos</a>
@@ -38,7 +38,7 @@
                 <button class="btn btn-outline-info my-2 my-sm-0 search-btn" type="submit">Buscar</button>
                 </form>
                 <div class="container-login">
-                    <a href="" >Login</a>
+                    <a href="<?php echo BASE_URL; ?>login" >Login</a>
                 </div>
 
             </div>

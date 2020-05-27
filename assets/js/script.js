@@ -53,4 +53,9 @@ $(function() {
         
         }     
     });
+
+    $("#delete-example").on("click", function() {
+        alert("Não é permitido excluir o agendamento de exemplo, caso queria que despareça, adicione um agendamento!!");
+    });
+
 });

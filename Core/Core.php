@@ -36,7 +36,6 @@ class Core {
 		}
 		$currentController = ucfirst($currentController);
 
-
 		$c = new $currentController();
 
 		if(!method_exists($c, $currentAction)) {

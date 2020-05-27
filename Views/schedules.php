@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-12">
 
-        <h3 class="title-schedules">Seus Agendamentos</h3><br/>
+        <h3 class="title-h3">Seus Agendamentos</h3><br/>
         <?php if(!empty($messages)): ?>
             <div class="alert alert-danger" role="alert"><?php echo $messages; ?></div>
         <?php endif; ?>
@@ -18,11 +18,13 @@
                 </tr>
             </thead>
             <tbody>
+                 
                 <?php foreach($schedules as $s): ?>
+                   
                 <tr>
                         <td><?php echo date('d/m/Y', strtotime($s['data_first'])); ?></td>
                         <td><?php echo date('d/m/Y', strtotime($s['data_end'])); ?></td>
-                      
+                       
                         <td><?php echo $s['description']; ?></td>
                         <?php if(!empty($s['done'])): ?>
                             <td class="table-scheudels-td-img-like"><a href="<?php echo BASE_URL; ?>schedules/done/<?php echo $s['id']; ?>?d=0" ><img src="<?php echo BASE_URL; ?>assets/imgs/like-success.png" /></a></td>
@@ -33,7 +35,21 @@
                         <td class="table-scheudels-td-img-delete"><a href="<?php echo BASE_URL; ?>schedules/delete/<?php echo $s['id']; ?>" ><img src="<?php echo BASE_URL; ?>assets/imgs/delete.png" /></a></td>
 
                 </tr>
-                    <?php endforeach; ?>
+                <?php endforeach; ?>
+                <?php if($schedules == array()): ?>
+                <tr>
+                        <td><?php echo date('d/m/Y'); ?></td>
+                        <td><?php echo date('d/m/Y'); ?></td>
+                      
+                        <td>Examplo de Agendamento</td>
+                        <td class="table-scheudels-td-img-like"><a href="<?php echo BASE_URL; ?>schedules/done/" ><img src="<?php echo BASE_URL; ?>assets/imgs/like-success.png" /></a></td>
+
+                        <td id="delete-example" class="table-scheudels-td-img-delete"><a  href="#" ><img src="<?php echo BASE_URL; ?>assets/imgs/delete.png" /></a></td>
+
+                </tr>
+                <?php endif; ?>
+               
+            
             </tbody>
         </table>
     </div>

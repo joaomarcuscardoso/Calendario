@@ -1,21 +1,31 @@
 <?php
 class HomeController extends Controller {
     private $array;
+    private $users;
     public function __construct() {
+        
         date_default_timezone_set('America/Sao_Paulo');
         $this->array = array("month" => array("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Juno", "Julho", "Agosto", "Setembro", "Outubro", "Novembro","Dezembro"),
         "month_number" => date("n"), "year" => date("yy"));
-        
-        
+        $this->users = new Users();
+        if($this->users->isLogged() == false) {
+
+            
+            header("Location: ".BASE_URL."login/");
+            exit;
+
+
+        }    
         
     }
 
     public function index() {
-        $data = new Data();  
+        $data = new Data(); 
+   
+        $id_user = $this->users->getId();
 
-        $this->array['data'] = $data->selectForId(1);
-
-
+        $this->array['data_schedules'] = $data->selectForId($id_user);
+        
 
         $months = date("m");
        
@@ -23,8 +33,7 @@ class HomeController extends Controller {
 
         $this->array["months"] = cal_days_in_month(CAL_GREGORIAN, $now['mon'], $now['year']);
 
-
-
+        $this->array['calendar_days'] = $data->getHolidaysAndSchedules($this->array['months'], $id_user); 
 
         $this->loadTemplate("home", $this->array);
     }

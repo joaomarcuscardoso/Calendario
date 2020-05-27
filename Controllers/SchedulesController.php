@@ -1,16 +1,23 @@
 <?php 
 class SchedulesController extends Controller {
     private $array;
+    private $users;
     public function __construct() {
         $this->array = array();
+        $this->users = new Users();
+        if($this->users->isLogged() == false) {           
+            header("Location: ".BASE_URL."login/");
+            exit;
+        }
+
     }
  
 
     public function index() {
        
         $data = new Data();
-
-        $this->array['schedules'] = $data->selectForId(1);
+        $id_user = $this->users->getId();
+        $this->array['schedules'] = $data->selectForId($id_user);
 
         $this->loadTemplate("schedules", $this->array);
     }
@@ -19,7 +26,7 @@ class SchedulesController extends Controller {
 
         if(!empty($_POST['data_first']) && !empty($_POST['data_end']) && !empty($_POST['description'])) {
             $data = new Data();
-            $id_user = 1;
+            $id_user = $this->users->getId();
             $data_first = addslashes($_POST['data_first']);
             $data_end = addslashes($_POST['data_end']);
             $description = addslashes($_POST['description']);
@@ -35,13 +42,15 @@ class SchedulesController extends Controller {
     }
 
     public function done($id_schedules) {
-        $id_user = 1;
         $done = 1;
+        $id_user = $this->users->getId();
+
         $data =new Data();
+   
 
         if(!empty($id_user) && !empty($id_schedules)) {
             $done = addslashes($_GET['d']);
-            
+           
             $data->doneSchedules($id_schedules, $id_user, $done);
 
         } 
@@ -50,12 +59,10 @@ class SchedulesController extends Controller {
         exit;              
     }
     public function delete($id_schedules) {
-        $id_user = 1;
-  
         $data =new Data();
-      
-        if(!empty($id_user) && !empty($id_schedules)) {
-
+        $id_user = $this->users->getId();
+ 
+        if(!empty($id_user) && !empty($id_schedules)) {  
             $data->deleteSchedules($id_schedules, $id_user);
         } 
         // javascript ve se existe o id_schedules, senão existir manda um alerta, ou mostra a div- alert danger

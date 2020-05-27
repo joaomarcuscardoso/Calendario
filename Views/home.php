@@ -20,17 +20,29 @@
     <div class="col-sm-12 calendar-col">
         <div class="calendar-container">
 
-            
             <?php for($i = 0;$i <= $months;$i++): // 42 ?>
 
-                <div class="calendar-container-day">
+                <!-- Data marcadas no calendario pelo usuário -->
+                
+                <div  class="calendar-container-day">
                     <ul>
                         <li><?php echo $i ?></li>
-      
+                        <?php foreach($calendar_days as $calendar): ?>
+                        <?php if(date("j/n/yy", strtotime($calendar['data_first'])) == $i."/".$month_number."/".$year): ?>
+                            <li>
+                                <div class="quadr_schedules">
+                                    <a class="quadr_shecules_mark" href="<?php echo BASE_URL; ?>schedules/"><div ></div></a>
+                                    <a  href="<?php echo BASE_URL; ?>schedules/" ><p><?php echo $calendar['description'] ?></p></a>
+                                
+                                </div>
+                            </li>
+                        <?php endif; ?>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
+
             <?php endfor; ?>    
-        
+                <
         </div>
     
     </div>

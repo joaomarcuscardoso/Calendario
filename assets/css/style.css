@@ -36,7 +36,6 @@ nav a:hover {
     background-color:#d4d4d4;
 }
 .month-container-prev , .month-container-next {
- 
     margin-top: auto;
     margin-bottom: auto;
     height:45px;
@@ -76,9 +75,7 @@ nav a:hover {
     width:156px;
     height:100px;
     border: 1px solid #000;
-    display:flex;
-    justify-content: center;
-    align-items: center;
+
     float:left;
 }
 .calendar-container-day ul {
@@ -89,12 +86,38 @@ nav a:hover {
     list-style-type: none;
     font-size: 25px;
 }
-.calendar-holidays {
-    color:gold;
-    border: 2px solid gold;
+/* Mostrando os agendamento no home */
+.quadr_shecules_mark {
+    float:left;
+    width:12%;
+    
+    height:20px;
+    background-color:#8ae8e1;
+    text-decoration: none;
+}
+.quadr_schedules {
+    float:left;
+    width:90%;
+    margin-bottom: 3px;
+    height: 20%;
+    background-color:#bbc7c6;
+    white-space: nowrap;
+    overflow: hidden;
+    
+
+}
+.quadr_schedules a {
+    
+    text-decoration: none;
+}
+.quadr_schedules a p {
+    color:#000;
+    font-size:12px;
+   
+    
 }
 /* Schedules(Agendamentos) */
-.title-schedules {
+.title-h3 {
     margin-top: 20px;
     text-align: center;
 }
@@ -113,4 +136,19 @@ nav a:hover {
     width:100%;
     height:100px;
     font-size: 18px;
+}
+/*  Login */
+.row-login {
+    margin-top: 20px;
+    display:flex;
+    justify-content: center;
+}
+/* Esqueceu a senha */
+.forgetPassword {
+    display:flex;
+    justify-content:center;
+}
+.forgetPassowrd-form {
+    margin-top: 20px;
+    
 }
