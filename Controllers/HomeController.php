@@ -15,8 +15,11 @@ class HomeController extends Controller {
             exit;
 
 
-        }    
-        
+        }  else {
+            $this->array["token"] = $_SESSION['token'];
+        }  
+
+
     }
 
     public function index() {
@@ -41,20 +44,21 @@ class HomeController extends Controller {
 
     public function change_month() {
         if(!empty($_POST["month-value"]) && !empty($_POST['year-value'])) {
-
+            $data = new Data(); 
+            $id_user = $this->users->getId();
             $months = addslashes($_POST['month-value']); 
             $this->array['year'] = intval(addslashes($_POST['year-value']));
 
-
+            $this->array['data_schedules'] = $data->selectForId($id_user);
             foreach($this->array['month'] as $key => $values) {
                 if($values == $months) {
                     $this->array['month_number'] =   $key + 1;
                 } 
             }
-           
 
-            
             $this->array["months"] = cal_days_in_month(CAL_GREGORIAN, $this->array['month_number'], $this->array['year']);
+             $this->array['calendar_days'] = $data->getHolidaysAndSchedules($this->array['months'], $id_user); 
+  
             $this->loadTemplate("home", $this->array);
 
         } else {

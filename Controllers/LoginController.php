@@ -10,29 +10,20 @@ class LoginController extends Controller {
         if($this->users->isLogged() == true) {
 
             //  perfil  do usuário
-            header("Location: ".BASE_URL."login/profile");
+            $this->array["token"] = $_SESSION['token'];
+            header("Location: ".BASE_URL."login/");
             exit;
         }
+        
 
     }
     
     public function index() {
-        if(!empty($_POST['email']) && !empty($_POST['password'])) {
-            
-            $email = addslashes($_POST['email']);
-            $password = addslashes(md5(($_POST['password'])));
-
-            
-            $this->array['access_user'] = $this->users->validateLogin($email, $password);
-
-            header("Location: ".BASE_URL);
-            exit;
-        }
         $this->loadTemplate("login", $this->array);
     }
 
     public function profile() {
-        // Fazer mudar o email, nome
+        // Fazer senha.
         $this->array['user_profile'] = $this->users->getUser();
 
         $this->loadTemplate("profile", $this->array);
@@ -40,6 +31,26 @@ class LoginController extends Controller {
 
     public function forgetPassword() {
         $this->loadTemplate("forgetPassword", $this->array);
+    }
+
+    public function login_access() {
+    
+        if(!empty($_POST['email']) && !empty($_POST['password'])) {
+            
+            $email = addslashes($_POST['email']);
+            $password = addslashes(md5(($_POST['password'])));
+
+            
+            $this->array['access_user'] = $this->users->validateLogin($email, $password);
+            if(empty($this->array['acces_user'])) {
+                $this->array['message'] = "Email e/ou senha errado(s)";
+                $this->loadTemplate("login", $this->array); 
+            } else {
+                print_r("t");exit;
+                header("Location: ".BASE_URL);
+                exit;
+            }
+        }
     }
 
     public function changedPassword() {
@@ -83,6 +94,15 @@ class LoginController extends Controller {
             header("Location: ".BASE_URL."login");
             exit;
         }
+    }
+
+    public function logout() {
+        if(!empty($_SESSION['token'])) {
+            $_SESSION['token'] = "";
+        } 
+     
+        header("Location: ".BASE_URL);
+        exit;
     }
 
 }

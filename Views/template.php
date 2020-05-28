@@ -33,12 +33,14 @@
                     </li>
 
                 </ul>
-                <form class="form-inline my-2 my-lg-0 search">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-info my-2 my-sm-0 search-btn" type="submit">Buscar</button>
-                </form>
+
                 <div class="container-login">
-                    <a href="<?php echo BASE_URL; ?>login" >Login</a>
+                        <?php if(!empty($token)): ?>
+                        <a href="<?php echo BASE_URL; ?>login" >Login</a>
+                        <?php else: ?>
+                        <a href="<?php echo BASE_URL; ?>login/logout">Sair</a>
+     
+                        <?php endif; ?>
                 </div>
 
             </div>

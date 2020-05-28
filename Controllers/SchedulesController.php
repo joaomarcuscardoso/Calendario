@@ -8,7 +8,10 @@ class SchedulesController extends Controller {
         if($this->users->isLogged() == false) {           
             header("Location: ".BASE_URL."login/");
             exit;
+        } else {
+            $this->array["token"] = $_SESSION['token'];
         }
+
 
     }
  

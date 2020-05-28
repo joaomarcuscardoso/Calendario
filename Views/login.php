@@ -9,7 +9,10 @@
 <div class="row row-login">
     <div class="col-sm-2"></div>
     <div class="col-sm-6">
-        <form method="POST">
+        <?php if(!empty($message)): ?>
+            <div class="alert alert-danger" role="alert"><?php echo $message; ?></div>
+        <?php endif; ?>
+        <form method="POST" action="<?php echo BASE_URL; ?>login/login_access">
             
             <label for="email">Email</label>
             <input type="email" class="form-control" name="email"  placeholder="Digite seu email..."><br/>

@@ -69,7 +69,7 @@ class Data extends Model {
     public function getHolidaysAndSchedules($days_of_month, $id_user) {
         $array = array();
 
-        $sql = "SELECT * FROM data WHERE id_user = :id_user AND done = :done LIMIT 2";
+        $sql = "SELECT * FROM data WHERE id_user = :id_user AND done = :done";
         $sql = $this->db->prepare($sql);
         $sql->bindValue(":id_user", $id_user);
         $sql->bindValue(":done", 0);
@@ -79,6 +79,7 @@ class Data extends Model {
             $array = $sql->fetchAll();
 
         }
+        
         return $array;
     }
 
