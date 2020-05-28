@@ -10,6 +10,9 @@
 <div class="row">
     <div class="col-sm-3"></div>
     <div class="col-sm-6">
+        <?php if(!empty($message)): ?>
+            <div class="alert alert-danger" role="alert"><?php echo $message; ?></div>
+        <?php endif; ?>
         <form  method="post" action="<?php echo BASE_URL; ?>login/changedPassword" class="forgetPassowrd-form">
             <label for="email" >Email</label>
             <input type="email" class="form-control" name="email">

@@ -6,7 +6,7 @@
     </div>
 
 </div>
-<div class="row row-login">
+<div class="row row-login" >
     <div class="col-sm-2"></div>
     <div class="col-sm-6">
         <?php if(!empty($message)): ?>

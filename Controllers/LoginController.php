@@ -30,6 +30,12 @@ class LoginController extends Controller {
     }
 
     public function forgetPassword() {
+        if(!empty($_SESSION['message'])) {
+           $this->array['message'] = $_SESSION['message'];
+           $_SESSION['message'] = "";
+        }
+
+
         $this->loadTemplate("forgetPassword", $this->array);
     }
 
@@ -43,10 +49,10 @@ class LoginController extends Controller {
             
             $this->array['access_user'] = $this->users->validateLogin($email, $password);
             if(empty($this->array['acces_user'])) {
-                $this->array['message'] = "Email e/ou senha errado(s)";
+                $this->array['message'] = "Email e/ou senha errado(s), por favor tente novamente.";
                 $this->loadTemplate("login", $this->array); 
             } else {
-                print_r("t");exit;
+                $this->array['message'] = "Email e/ou senha vazios, digite seus dados por favor.";
                 header("Location: ".BASE_URL);
                 exit;
             }
@@ -74,6 +80,7 @@ class LoginController extends Controller {
                 exit; */
                 $this->array['token'] = $_SESSION['token'];
             } else {
+                $_SESSION['message'] = "Email incorreto, por favor tente novamente.";
                 header("Location: ".BASE_URL."login/forgetPassword");
                 exit;
             }
