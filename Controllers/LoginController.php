@@ -48,15 +48,20 @@ class LoginController extends Controller {
 
             
             $this->array['access_user'] = $this->users->validateLogin($email, $password);
-            if(empty($this->array['acces_user'])) {
+
+            if(count($this->array['acces_user']) > 0) {
                 $this->array['message'] = "Email e/ou senha errado(s), por favor tente novamente.";
-                $this->loadTemplate("login", $this->array); 
+
             } else {
-                $this->array['message'] = "Email e/ou senha vazios, digite seus dados por favor.";
-                header("Location: ".BASE_URL);
+                                        
+                header("Location: ".BASE_URL."home");
                 exit;
             }
+        } else {
+            $this->array['message'] = "Email e/ou senha vazios, digite seus dados por favor.";
         }
+
+        $this->loadTemplate("login", $this->array); 
     }
 
     public function changedPassword() {
@@ -110,6 +115,25 @@ class LoginController extends Controller {
      
         header("Location: ".BASE_URL);
         exit;
+    }
+
+    public function register() {
+        $this->loadTemplate("register", $this->array);
+    }
+    public function register_valitaion() {
+        if(!empty($_POST['email']) && !empty($_POST['password'])) {
+            $email = addslashes($_POST['email']);
+            $password = md5(addslashes($_POST['password']));
+            
+            $this->users->registerUser($email, $password);
+
+            header("Location: ".BASE_URL);
+            exit;
+        } else {    
+            $this->array['message'] = "Preencha todos os dados por favor!!";
+            header("Location: ".BASE_URL."login/register");
+            exit;
+        }
     }
 
 }

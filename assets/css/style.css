@@ -29,6 +29,28 @@ nav a:hover {
     list-style: none;
 
 }
+.btn_submit {
+    background: #212529;
+    border: 0;
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 100;
+    letter-spacing: 1.2pt;
+    text-align: center;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    -moz-box-shadow: 2px 3px 0px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 2px 3px 0px rgba(0,0,0,0.2);
+    box-shadow: 3px 3px 0px rgba(0,0,0,0.2);
+}
+.btn_submit:hover {
+    color:#fff;
+}
+.sub_btn {
+    display:flex;
+    justify-content: center;
+    margin-top: 10px;
+}
 .month-container-row {
 
 }

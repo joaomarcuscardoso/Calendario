@@ -36,9 +36,9 @@
 
                 <div class="container-login">
                         <?php if(!empty($token)): ?>
-                        <a href="<?php echo BASE_URL; ?>login" >Login</a>
+                        <a href="<?php echo BASE_URL; ?>Login" >Login</a>
                         <?php else: ?>
-                        <a href="<?php echo BASE_URL; ?>login/logout">Sair</a>
+                        <a href="<?php echo BASE_URL; ?>Login/logout">Sair</a>
      
                         <?php endif; ?>
                 </div>

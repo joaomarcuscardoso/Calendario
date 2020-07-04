@@ -44,6 +44,19 @@ class Users extends Model {
         return false;
     }
 
+    public function registerUser($email, $password) {
+        $sql = "INSERT INTO users (email, password) VALUES (:email, :password)";
+        $sql = $this->db->prepare($sql);
+        $sql->bindValue(":email", $email);
+        $sql->bindValue(":password", $password);
+        $sql->execute();
+        $users = new Users();
+
+        $users->validateLogin($email, $password);
+
+
+    }
+
     public function getUser() {
         $array = array();
 
@@ -54,8 +67,7 @@ class Users extends Model {
             $sql->bindValue(":token", $token);
             $sql->execute();
             
-            print_r($token);
-            exit;
+
             if($sql->rowCount() > 0) {
                 $array = $sql->fetch();
             }
